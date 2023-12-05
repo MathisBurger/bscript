@@ -18,9 +18,9 @@ impl StdLib {
                 "str" => "String".to_string(),
                 _ => parameters.get(x).unwrap().to_string()
             };
-            //if (x-1)>=0 && parameters.get(x-1).unwrap().as_str() == "String" {
-            //    parameter = format!("String::from({})", parameter);;
-            //}
+            if parameter.contains("\"") {
+                parameter = format!("{}.to_string()", parameter);
+            }
             raw_line = raw_line.replace(
                 format!("${}", x).as_str(),
                 parameter.as_str()
@@ -34,6 +34,10 @@ impl StdLib {
             "print" => Some("println!(\"{}\", $0);".to_string()),
             "init" => Some("let mut $0:$1=$2;".to_string()),
             "add" => Some("$0=$1+$2;".to_string()),
+            "store" => Some("$0=$1;".to_string()),
+            "sub" => Some("$0=$1-$2;".to_string()),
+            "mul" => Some("$0=$1*$2;".to_string()),
+            "div" => Some("$0=$1/$2;".to_string()),
             _ => None
         }
     }

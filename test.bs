@@ -1,6 +1,16 @@
-print << "Hello World!"
+init << out_str << str << "Hello World!"
+print << out_str
+store << out_str << "Test!"
+print << out_str
 init << porn << int << 127
 init << hub << int << 1
 init << res << int << 0
 add << res << porn << hub
 print << res
+sub << res << res << hub
+print << res
+mul << res << porn << res
+print << res
+div << res << res << res
+print << res
+add << res << res << 45
