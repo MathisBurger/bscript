@@ -1,1 +1,6 @@
 print << "Hello World!"
+init << porn << int << 127
+init << hub << int << 1
+init << res << int << 0
+add << res << porn << hub
+print << res

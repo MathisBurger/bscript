@@ -13,9 +13,17 @@ impl StdLib {
         }
         let mut raw_line: String = line.unwrap();
         for x in 0..parameters.len() {
+            let mut parameter = match parameters.get(x).unwrap().replace(" ", "").as_str() {
+                "int" => "i128".to_string(),
+                "str" => "String".to_string(),
+                _ => parameters.get(x).unwrap().to_string()
+            };
+            //if (x-1)>=0 && parameters.get(x-1).unwrap().as_str() == "String" {
+            //    parameter = format!("String::from({})", parameter);;
+            //}
             raw_line = raw_line.replace(
                 format!("${}", x).as_str(),
-                parameters.get(x).unwrap().as_str()
+                parameter.as_str()
             );
         }
         Some(raw_line.to_string())
@@ -24,6 +32,8 @@ impl StdLib {
     fn check_lib_hit(func: String) -> Option<String> {
         match func.as_str() {
             "print" => Some("println!(\"{}\", $0);".to_string()),
+            "init" => Some("let mut $0:$1=$2;".to_string()),
+            "add" => Some("$0=$1+$2;".to_string()),
             _ => None
         }
     }
