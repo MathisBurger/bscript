@@ -16,3 +16,5 @@ print << res
 add << res << res << 45
 pow << res << res << 2
 print << res
+cmp << res << 1 << 1
+print << res

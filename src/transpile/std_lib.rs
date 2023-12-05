@@ -39,6 +39,7 @@ impl StdLib {
             "mul" => Some("$0=$1*$2;".to_string()),
             "div" => Some("$0=$1/$2;".to_string()),
             "pow" => Some("$0=i128::pow($1,$2);".to_string()),
+            "cmp" => Some("$0=($1==$2) as i128;".to_string()),
             _ => None
         }
     }
