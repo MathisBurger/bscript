@@ -4,7 +4,6 @@ pub(crate) mod hasher;
 mod builder;
 
 use std::env;
-use std::fmt::format;
 use crate::transpile::builder::Builder;
 
 pub fn transpile() {

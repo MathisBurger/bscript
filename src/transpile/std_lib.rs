@@ -14,7 +14,7 @@ impl StdLib {
         let mut raw_line: String = line.unwrap();
         for x in 0..parameters.len() {
             let mut parameter = match parameters.get(x).unwrap().replace(" ", "").as_str() {
-                "int" => "i128".to_string(),
+                "int" => "isize".to_string(),
                 "str" => "String".to_string(),
                 _ => parameters.get(x).unwrap().to_string()
             };
@@ -38,8 +38,8 @@ impl StdLib {
             "sub" => Some("$0=$1-$2;".to_string()),
             "mul" => Some("$0=$1*$2;".to_string()),
             "div" => Some("$0=$1/$2;".to_string()),
-            "pow" => Some("$0=i128::pow($1,$2);".to_string()),
-            "cmp" => Some("$0=($1==$2) as i128;".to_string()),
+            "pow" => Some("$0=isize::pow($1,$2);".to_string()),
+            "cmp" => Some("$0=($1==$2) as isize;".to_string()),
             _ => None
         }
     }

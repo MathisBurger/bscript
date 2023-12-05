@@ -23,19 +23,15 @@ impl Builder {
            // logic and functions will be added soon
            self.add_to_main(self.lines.get(x).unwrap().clone());
         }
-        Builder::build_function("main".to_string(), self.main_funcs.clone(), true)
+        Builder::build_function("main".to_string(), self.main_funcs.clone())
     }
 
-    fn build_function(name: String, methods: Vec<String>, escape_hash: bool) -> String {
+    fn build_function(name: String, methods: Vec<String>) -> String {
         let mut body = String::new();
         for x in methods {
             body = format!("{}{}", body, x)
         }
-        if escape_hash {
-            return format!("pub fn {}(){{ {} }}", name, body)
-        }
-        let body_hash = hasher::calculate_hash(&body);
-        return format!("pub fn {}_{}(){{ {} }}", body_hash, name, body);
+        return format!("pub fn {}(){{ {} }}", name, body);
     }
 
     fn add_to_main(&mut self, line: String) {
