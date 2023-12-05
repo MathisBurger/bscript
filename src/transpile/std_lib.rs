@@ -13,7 +13,6 @@ impl StdLib {
         }
         let mut raw_line: String = line.unwrap();
         for x in 0..parameters.len() {
-            println!("{}, {}, {}", raw_line, x, parameters.get(x).unwrap());
             raw_line = raw_line.replace(
                 format!("${}", x).as_str(),
                 parameters.get(x).unwrap().as_str()

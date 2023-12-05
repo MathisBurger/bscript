@@ -1,4 +1,5 @@
 mod transpile;
+mod compile;
 
 use std::env;
 
@@ -10,6 +11,7 @@ fn main() {
     }
     match args[1].as_str() {
         "transpile" => transpile::transpile(),
+        "compile" => compile::compile(),
         _ => println!("Command not found")
     }
 }

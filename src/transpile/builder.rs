@@ -49,14 +49,13 @@ impl Builder {
     fn seperate_params(line: String) -> (String, Vec<String>) {
         let spl: Vec<String> = line.split("<<")
             .map(str::to_string)
-            .map(|x| x.replace(" ", ""))
             .collect();
         if spl.len() > 1 {
             let mut params: Vec<String> = vec![];
             for x in 1..spl.len() {
                 params.push(spl.get(x).unwrap().clone());
             }
-            return (spl.get(0).unwrap().clone(), params);
+            return (spl.get(0).unwrap().clone().replace(" ", ""), params);
         }
         return (spl.get(0).unwrap().clone(), vec![]);
     }

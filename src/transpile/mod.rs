@@ -21,9 +21,12 @@ pub fn transpile() {
     functional_transpile(filename);
 }
 
-pub fn functional_transpile(filename: &String) {
+pub fn functional_transpile(filename: &String) -> String {
     let content = file_handler::get_script_content(filename.clone());
     let content_hash = hasher::calculate_hash(&content);
     let mut builder = Builder::new(content);
-    file_handler::write_string(format!("{}{}.rs", content_hash, filename), builder.build()).expect("Cannot transpile");
+    let output_file_name = format!("{}{}", content_hash, filename).replace(".", "_");
+    let rust_file_name = format!("{}.rs", output_file_name);
+    file_handler::write_string(rust_file_name.clone(), builder.build()).expect("Cannot transpile");
+    return rust_file_name;
 }
