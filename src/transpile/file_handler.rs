@@ -9,6 +9,7 @@ pub(crate) fn get_script_content(file_path: String) -> Vec<String> {
     contents.split("\n").map(str::to_string).collect()
 }
 
+/// Writes a string to a file
 pub(crate) fn write_string(path: String, data: String) -> std::io::Result<()> {
     let mut f = File::create(path)?;
     f.write_all(data.as_bytes())

@@ -6,6 +6,7 @@ mod builder;
 use std::env;
 use crate::transpile::builder::Builder;
 
+/// This method is called to transpile from command
 pub fn transpile() {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
@@ -20,6 +21,7 @@ pub fn transpile() {
     functional_transpile(filename);
 }
 
+/// This method transpiles the content of a specific file
 pub fn functional_transpile(filename: &String) -> String {
     let content = file_handler::get_script_content(filename.clone());
     let content_hash = hasher::calculate_hash(&content);

@@ -1,11 +1,10 @@
-use std::fmt::format;
 
-pub(crate) struct StdLib {
-    func: Vec<String>
-}
+/// Implements the standard library
+pub(crate) struct StdLib;
 
 impl StdLib {
 
+    /// Tries to get the full string with parameters filled in
     pub fn try_get_value(func: String, parameters: Vec<String>) -> Option<String> {
         let line = StdLib::check_lib_hit(func);
         if line == None {
@@ -29,6 +28,8 @@ impl StdLib {
         Some(raw_line.to_string())
     }
 
+    /// Tries to get the full string without parameters filled in.
+    /// The parameters are presented as placeholders
     fn check_lib_hit(func: String) -> Option<String> {
         match func.as_str() {
             "print" => Some("println!(\"{}\", $0);".to_string()),

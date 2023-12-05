@@ -2,6 +2,7 @@ use std::env;
 use std::process::Command;
 use crate::transpile::functional_transpile;
 
+/// Compile from CLI
 pub fn compile() {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
@@ -18,6 +19,7 @@ pub fn compile() {
     }
 }
 
+/// Compile from code
 fn functional_compile(filename: String){
     Command::new("rustc")
         .arg(filename)
