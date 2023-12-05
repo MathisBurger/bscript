@@ -38,6 +38,7 @@ impl StdLib {
             "sub" => Some("$0=$1-$2;".to_string()),
             "mul" => Some("$0=$1*$2;".to_string()),
             "div" => Some("$0=$1/$2;".to_string()),
+            "pow" => Some("$0=i128::pow($1,$2);".to_string()),
             _ => None
         }
     }
